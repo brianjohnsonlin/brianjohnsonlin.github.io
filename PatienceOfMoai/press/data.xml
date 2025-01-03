@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- example file containing base tags -->
+
+<game>	
+	<title>Eggy Interactive</title>
+	<founding-date>January 4th, 2016</founding-date>
+	<website>http://www.moai-game.com</website>
+	<based-in>Santa Cruz, California</based-in>
+	
+	<press-contact>eggyinteractive@gmail.com</press-contact>
+
+	<socials>
+		<social>
+			<name>twitter.com/PatienceOfMoai</name>
+			<link>twitter.com/PatienceOfMoai</link>
+		</social>
+		<social>
+			<name>facebook.com/PatienceOfMoai</name>
+			<link>facebook.com/PatienceOfMoai</link>
+		</social>
+	</socials>
+
+	<description>	
+		Moai is a game where you play as a stone statue with the power of infinite patience.  Explore a huge, procedurally generated world made in a low-poly art style.  Find and solve procedurally generated puzzles to learn more about this strange new world.
+	</description>
+		
+	<histories>
+		<history>
+			<header>Early history</header>
+			<text>Brian Lin, our Lead Designer came up with the idea for Moai.  He got inspiration for the game from the webcomic GunnerKrigg Court.  There was a character that was a timeless being, who had been on the Earth since the beginning of the world and could not die.  The idea was to make a game about a being like this, that could see time fly by them and the world change around them.  The Moai (Easter Island statue) seemed to fit the idea of a timeless being that was needed for the game.  The team met and formed in college to bring the idea of Moai to life.</text>
+		</history>
+		<history>
+			<header>After that</header>
+			<text>For around the past year the team has been working hard on Moai.  On April 22nd, 2016 we had our Alpha Release of the game, and had a Closed Beta Release in May of 2016.  The game had its final release on June 3rd, 2016.</text>
+		</history>
+	</histories>
+		
+	<trailers>
+		<trailer>
+			<name>Launch Trailer</name>
+			<youtube>4FtNUEkyj3Q</youtube>
+		</trailer>
+	</trailers>
+	
+	<awards>
+	</awards>
+	
+	<press-can-request-copy>TRUE</press-can-request-copy> <!-- can be true or false -->
+	<monetization-permission>monetize</monetization-permission> <!-- can be: 	false (no video allowed),
+																			 	ask (permission on case-per-case basis),
+																			 	non-commercial (no monetization allowed),
+																			 	monetize (full permission) -->	
+	
+	<credits>
+		<credit>
+			<person>Brian Lin</person>
+			<role>Lead Designer, Developer</role>
+		</credit>
+		<credit>
+			<person>Ryan Lima</person>
+			<role>Lead Developer</role>
+		</credit>
+		<credit>
+			<person>Nathan Irwin</person>
+			<role>Lead Producer, Developer</role>
+		</credit>
+		<credit>
+			<person>Yunyi Ding</person>
+			<role>Art Director, Artist</role>
+		</credit>
+		<credit>
+			<person>Anderson Tu</person>
+			<role>Audio Engineer, Composer, QA Coordinator</role>
+		</credit>
+	</credits>
+	
+	<contacts>
+		<contact>
+			<name>Inquiries</name>
+			<mail>eggyinteractive@gmail.com</mail>
+		</contact>
+		<contact>
+			<name>Twitter</name>
+			<link>http://twitter.com/PatienceOfMoai</link>
+		</contact>
+		<contact>
+			<name>Facebook</name>
+			<link>http://facebook.com/PatienceOfMoai</link>
+		</contact>
+		<contact>
+			<name>Web</name>
+			<link>www.moai-game.com</link>
+		</contact>
+	</contacts>
+</game>
