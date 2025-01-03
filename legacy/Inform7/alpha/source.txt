@@ -1,0 +1,150 @@
+"Time" by Eggy Interactive
+
+Section 0.1 - Values
+
+ScientistTalked is a number that varies.
+TimeZone is a number that varies.
+Powered is a number that varies.
+FirstTravel is a number that varies.
+TimeTravel is a number that varies.
+When play begins:
+	now ScientistTalked is 0;
+	now TimeZone is 0;
+	now Powered is 1;
+	now FirstTravel is 0;
+	now TimeTravel is 0.
+
+Section 0.2 - Rooms
+
+Lobby is a room. "Welcome to CoreTech, where innovation happens to change the future. Congratulations, you are the first of many to be qualified as a human test subject for the newly invented Time Machine. Please follow the escort to the briefing room." A man called escort is in the Lobby. The description of the escort is "He's here to take you places.".
+
+Briefing Room is a room . "The room for briefing." A woman called scientist is in the Briefing Room. The description of the scientist is "She must be one of the people working on the Time Machine."
+
+PresentTestingRoom is above FutureTestingRoom.
+PresentTestingRoom is a room with the printed name "Testing Room". "A large cube vault with metal walls. Clearly if something were to go wrong here, it would be contained. The clock on the wall says it's Tuesday afternoon." 
+	Time Machine is in the PresentTestingRoom. 
+	The PresentVaultDoor is a locked door with the printed name "Vault Door".
+		Understand "door" and "vault door" as the PresentVaultDoor.
+		The PresentVaultDoor is north of the PresentObservationRoom and south of the PresentTestingRoom.
+FutureTestingRoom is a room with the printed name "Testing Room". "A large cube vault with rusty metal walls. Doesn't look like this place has been used in years. The clock on the wall says it's Wednesday morning, but it's not moving forward."
+	The FutureVaultDoor is an door with the printed name "Vault Door".
+		Understand "door" and "vault door" as the FutureVaultDoor.
+		The FutureVaultDoor is north of the FutureObservationRoom and south of the FutureTestingRoom.
+		After opening FutureVaultDoor:
+			now FutureVaultDoor is unopenable;
+			say "You reach over to open the vault door when it suddenly falls loose from its hinges and crashes to the ground. At least it's open now.".
+
+PresentObservationRoom is above FutureObservationRoom.
+PresentObservationRoom is a room with the printed name "Observation Room". "The room observing the testing room. Monitors and control panels cover every inch of the walls."
+	The PresentEnergyDoor is a locked door with the printed name "Energy Door".
+		Understand "door" and "energy door" as the PresentEnergyDoor.
+		The PresentEnergyDoor is west of the PresentObservationRoom and east of the PresentEnergyRoom.
+	Access Card is in the PresentObservationRoom.
+	Lab Coat is in the PresentObservationRoom.
+FutureObservationRoom is a room with the printed name "Observation Room". "The room observing the testing room. Most of the machinery isn't functioning anymore."
+	The FutureEnergyDoor is a door with the printed name "Energy Door".
+		Understand "door" and "energy door" as the FutureEnergyDoor.
+		The FutureEnergyDoor is west of the FutureObservationRoom and east of the FutureEnergyRoom.
+
+PresentEnergyRoom is above FutureEnergyRoom.
+PresentEnergyRoom is a room with the printed name "Energy Room". "The room that manages the energy in the building."
+FutureEnergyRoom is a room with the printed name "Energy Room". "The room that manages the energy in the building. Some of the machinery is surprisingly still functional."
+	Charger is in FutureEnergyRoom.
+
+Section 0.3 - Items
+
+Understand "tm" as Time Machine.
+	The description of the Time Machine is "It's a small circular device with a large button on it. It lets me travel through time. The button is [if Powered is 0]black[otherwise if TimeZone is 0]red[otherwise]green[end if].".
+	After taking Time Machine, say "Taken. You hear the scientist through the overhead speaker, 'Whenever you're ready.'".
+	Instead of dropping Time Machine, say "It's probably a good idea to hang onto that.".
+
+Understand "card" as Access Card.
+	The description of the Access Card is "It's a scientist's access card.".
+
+Understand "coat" as Lab Coat.
+		The description of the Lab Coat is "The scientist's lab coat. It looks like she left in a hurry.".
+		Instead of taking Lab Coat: say "You decide it would be better to not touch that.".
+
+Section 0.4 - Actions
+
+Followfailing is an action applying to nothing. Understand "follow" as followfailing. Carry out followfailing: say "Who do you want to follow?".
+Following is an action applying to one thing. Understand "follow [someone]" as following.
+Carry out following:
+	if following escort:
+		say "'Right this way,' says the escort. You follow him to the briefing room.";
+		now player is in Briefing Room;
+		try examining scientist;
+	otherwise if following scientist and ScientistTalked is 1:
+		say "You follow her to the testing room. 'You'll be conducting the test here,' she says before leaving the room.";
+		now player is in PresentTestingRoom;
+	otherwise if following a man:
+		say "He's not going anywhere.";
+	otherwise if following a woman:
+		say "She's not going anywhere.";
+	otherwise:
+		say "It's not going anywhere.".
+
+Talkfailing is an action applying to nothing. Understand "talk" as talkfailing. Carry out talkfailing: say "Who do you want to talk to?".
+Talking is an action applying to one thing. Understand "talk to [someone]" as talking.
+Carry out talking:
+	if talking escort:
+		say "'Please follow me to the briefing room,' says the escort.";
+	otherwise if talking scientist:
+		if ScientistTalked is 0:
+			say "'Oh good he's here,' says the scientist, 'Okay, here's the deal. In the testing room is the Time Machine and a clock on the wall. It's a small circular device with a large button on it. It's set to travel 24 hours into the future. If the button is red you're in the present. If it's green, you're in the future. Your job is simple. Go into the testing room, take the Time Machine and press the button. Check the clock, make sure it's tomorrow, check off with us, and then press the button again. Got it? Cool. Please follow me to the testing room.'";
+			now ScientistTalked is 1;
+		otherwise:
+			say "'Please follow me to the testing room,' says the scientist.";
+	otherwise if talking a man:
+		say "He's got nothing to say.";
+	otherwise if talking a woman:
+		say "She's got nothing to say.";
+	otherwise:
+		say "It's got nothing to say.".
+
+Usefailing is an action applying to nothing. Understand "use" as usefailing. Carry out usefailing: say "What do you want to use?"
+Using is an action applying to one carried thing. Understand "use [something]" as using.
+Carry out using:
+	if using Time Machine:
+		if Powered is 0:
+			say "You press the button, but nothing happens. You notice that the button is strangely black.";
+		otherwise:
+			say "You press the button. The world spins around you before coming to a stop.";
+			if FirstTravel is 0:
+				say "You feel queasy and light-headed. You've made it through the time portal.";
+				now Powered is 0;
+				now TimeZone is 1;
+				now FirstTravel is 1;
+				now TimeTravel is 1;
+				try going down;
+				now TimeTravel is 0;
+			otherwise if TimeZone is 1:
+				now TimeZone is 0;
+				now TimeTravel is 1;
+				try going up;
+				now TimeTravel is 0;
+			otherwise if TimeZone is 0:
+				now TimeZone is 1;
+				now TimeTravel is 1;
+				try going down;
+				now TimeTravel is 0;
+	otherwise if using Charger:
+		say "You plug in the Time Machine and after a few moments the button flares green.";
+		now Powered is 1;
+	otherwise:
+		say "You're confused as to how you should use it.".
+
+Check going up:
+	if TimeTravel is 1:
+		continue the action;
+	otherwise:
+		say "You can't go that way.";
+		stop the action.
+Check going down:
+	if TimeTravel is 1:
+		continue the action;
+	otherwise:
+		say "You can't go that way.";
+		stop the action.
+
+Release along with [cover art, ]the source text, an interpreter, and a website.

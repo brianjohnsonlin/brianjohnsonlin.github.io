@@ -1,0 +1,134 @@
+/*!
+ * Start Bootstrap - Portfolio Item HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background: url(images/backgroundblue.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #dddddd;
+}
+
+.portfolio-item {
+    margin-bottom: 30px;
+    transition: height 1s ease;
+    padding-left: 45px;
+    padding-right: 45px;
+    text-align: justify;
+}
+
+.portfolio-item a img {
+    margin-bottom: 10px;
+    transition: opacity 0.5s ease;
+}
+
+.portfolio-item a img:hover {
+    opacity: 0.5;
+}
+
+.buttons {
+    margin-top: 50px;
+    -webkit-column-count: 5; /* Chrome, Safari, Opera */
+    -moz-column-count: 5; /* Firefox */
+    column-count: 4;
+}
+
+.buttons a {
+    display:block;
+	color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+	text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #000070;
+	border: solid #555BC0 3px;
+	padding: 0.5em;
+    cursor: pointer;
+    width: auto;
+    max-width: 275px;
+}
+
+.buttons a:hover {
+    background-color: #0000A0;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    max-width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Modal */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.contactClose,
+.resumeClose {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.contactClose:hover,
+.contactClose:focus,
+.resumeClose:hover,
+.resumeClose:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    color: black;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+h1 {color: #eeeeee;}
+h3 {color: #eeeeee;}

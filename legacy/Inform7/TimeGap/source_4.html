@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Eggy Interactive - TimeGap In The Mirror — 6 of 6</title>
+  <link href="Small Cover.jpg" rel="shortcut icon" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="author" content="Eggy Interactive" />
+  <meta name="description" content="A page for the game TimeGap In The Mirror by Eggy Interactive." />
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+ </head>
+
+<body>
+
+<div class = "container">
+
+<div class ="sourcecoverimage">
+	<span><a href="Cover.jpg"><img src="Small Cover.jpg" border="1"></a></span>
+</div>
+
+<div class ="sourceintroduction">
+	<h1>
+		<span>TimeGap In The Mirror</span> <span class="pagination">— 6 of 6</span>
+	</h1>
+	<h2>
+		<span>Eggy Interactive</span>
+	</h2>
+	<div class ="sourcebibliography">
+		<span>Release 1</span>
+	</div>
+</div>
+
+<div class = "links">
+<ul>
+<li><a href="index.html">Home page</a></li><li><a href="source.html">Beginning</a></li><li><a href="source_3.html">Previous</a></li>
+</ul>
+</div>
+
+<div class = "source">
+<p class="indent0"><span class="heading">Chapter 5 - Scenes</span></p><p class="indent0">MirrorAttract is a scene. MirrorAttract begins when player is in Living Room.</p><p class="indent1">Every turn during MirrorAttract:</p><p class="indent2">say &quot;<span class="quote">You have the sudden urge to glance at the brass mirror. You try your best not to look at it, but it still attracts your attention, like it's giving off a magical aura.</span>&quot;.</p><p class="indent1">MirrorAttract ends when MirrorTouched is 1.</p><p class="indent0">Ringing is a scene. Ringing begins when MirrorAttract ends.</p><p class="indent1">Every turn during Ringing:</p><p class="indent2">say &quot;<span class="quote">The phone is ringing.</span>&quot;.</p><p class="indent1">Ringing ends when PhoneAnswered is 1.</p><p class="indent0">Knocking is a scene. Knocking begins when Ringing ends.</p><p class="indent1">Every turn during Knocking:</p><p class="indent2">say &quot;<span class="quote">You hear a knock on the door.</span>&quot;.</p><p class="indent1">When knocking ends:</p><p class="indent2">say &quot;<span class="quote">'Sir, here is your package.' A mailman stands outside in front of you. Taking the package, you sign the sheet and close the door.</span>&quot;;</p><p class="indent2">now Front is closed;</p><p class="indent2">now player has a package;</p><p class="indent2">try examining package.</p><p class="indent1">Knocking ends when Front Door is open.</p><p class="indent0">MirrorAttract2 is a scene. MirrorAttract2 begins when player has toy.</p><p class="indent1">Every turn during MirrorAttract2:</p><p class="indent2">say &quot;<span class="quote">You have the sudden urge to glance at the brass mirror. You try your best not to look at it, but it still attracts your attention, like it's giving off a magical aura.</span>&quot;.</p><p class="indent1">MirrorAttract2 ends when player is in lobby.</p><p class="indent0">First is a scene. First begins when the player is in the FutureTestingRoom.</p><p class="indent1">FirstCounter is a number that varies.</p><p class="indent1">When First begins:</p><p class="indent2">now Powered is 0;</p><p class="indent2">now FirstCounter is 0.</p><p class="indent1">Every turn during First:</p><p class="indent2">say the observation corresponding to the obNum of FirstCounter in the Table of First Observations;</p><p class="indent2">increase FirstCounter by 1.</p><p class="indent1">First ends when FirstCounter is 5 or Powered is 1.</p><p class="indent0"><span class="heading">Table of First Observations</span></p><table><tr><td><span class="columnhead">obNum</span></td><td><span class="columnhead">observation</span></td></tr>
+<tr><td>0</td><td>&quot;<span class="quote">You feel queasy and light-headed. You've made it through the time portal.</span>&quot;</td></tr>
+<tr><td>1</td><td>&quot;<span class="quote">Something's off. The lab seems deserted, the clock reads less than 24 hours from when you started, and the place seems to have aged years.</span>&quot;</td></tr>
+<tr><td>2</td><td>&quot;<span class="quote">'Hello?' you call out. No Answer.</span>&quot;</td></tr>
+<tr><td>3</td><td>&quot;<span class="quote">The button on the time machine is black. The scientist never mentioned anything about the button being this color.</span>&quot;</td></tr>
+<tr><td>4</td><td>&quot;<span class="quote">Maybe the Time Machine is out of power. Try finding something to charge it with.</span>&quot;</td></tr>
+</table><p class="indent0">Second is a scene. Second begins when the player is in FutureHallway2.</p><p class="indent1">SecondCounter is a number that varies.</p><p class="indent1">When Second begins:</p><p class="indent2">now SecondCounter is 0.</p><p class="indent1">Every turn during Second:</p><p class="indent2">say the observation corresponding to the obNum of SecondCounter in the Table of Second Observations;</p><p class="indent2">increase SecondCounter by 1.</p><p class="indent1">Second ends when SecondCounter is 4.</p><p class="indent0"><span class="heading">Table of Second Observations</span></p><table><tr><td><span class="columnhead">obNum</span></td><td><span class="columnhead">observation</span></td></tr>
+<tr><td>0</td><td>&quot;<span class="quote">You walk through the door just as the doorframe give away and caves into the doorway. Looks like there's no going back.</span>&quot;</td></tr>
+<tr><td>1</td><td>&quot;<span class="quote">Looks like talking to anyone about the end of the world is out of the question. They've already got security looking all over for you back in the present.</span>&quot;</td></tr>
+<tr><td>2</td><td>&quot;<span class="quote">Maybe you can take matters into your own hand, you think. But first you have to find out how this place got to be like this.</span>&quot;</td></tr>
+<tr><td>3</td><td>&quot;<span class="quote">Maybe the building has some kind of surveillance system that you can check.</span>&quot;</td></tr>
+</table><p class="indent0">Third is a scene. Third begins when VideoWatched is 1.</p><p class="indent1">When Third begins:</p><p class="indent2">now surveillance videochip is nowhere;</p><p class="indent2">now access card is in PresentCameraRoom;</p><p class="indent2">say &quot;<span class="quote">You insert the videochip into the computer. The screen lights up and plays the video automatically. At first it doesn't seem like anything is happening, but then there's a huge green wave that ripples across all camera views. Shocked, you rewind the video and try to find the origin of the shockwave, It looks like it's coming from a particular room. [</span><span class="substitution">line break</span><span class="quote">][</span><span class="substitution">line break</span><span class="quote">]It reads 'Time Machine Testing Lab'. The end of the world was caused by the Time Machine! You need to do something about this.[</span><span class="substitution">line break</span><span class="quote">][</span><span class="substitution">line break</span><span class="quote">]You then also notice an access card on the table that you overlooked earlier.</span>&quot;.</p>
+</div>
+
+<div class ="notes">
+
+</div>
+
+</div>
+
+</body>
+
+</html>

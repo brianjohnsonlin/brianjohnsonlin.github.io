@@ -1,0 +1,423 @@
+"TimeGap In The Mirror" by Eggy Interactive
+
+The story description is "A fantasy science fiction text adventure with a mysterious mirror and a handheld time machine.".
+Release along with cover art, the source text, an interpreter, and a website.
+
+Chapter 1 - Values
+
+AsprinTaken is a number that varies.
+MirrorTouched is a number that varies.
+PhoneAnswered is a number that varies.
+ScientistTalked is a number that varies.
+TimeZone is a number that varies.
+Powered is a number that varies.
+VideoWatched is a number that varies.
+When play begins:
+	now AsprinTaken is 0;
+	now MirrorTouched is 0;
+	now PhoneAnswered is 0;
+	now ScientistTalked is 0;
+	now TimeZone is 0;
+	now Powered is 1;
+	now VideoWatched is 0.
+
+Chapter 2 - Rooms
+
+Bedroom is a room. "Morning sunshine pours into the room through the window.[line break]To the west is the bathroom and to the east is the living room.". Bedroom is east of the Bathroom and west of the Living Room.
+	A window is scenery in bedroom. The description of a window is "It's quite a sunny day outside today.".
+	A bed is an enterable not portable thing in the bedroom. The player is in the bed. The description of the bed is "That's where you sleep".
+	After exiting from the bed:
+		say "Slowly get off the bed, feeling your whole brain numb. You remember that you have asprin in the bathroom cabinet. Maybe you should take some.".
+	Instead of going east when AsprinTaken is 0 and player is in Bedroom:
+		say "The asprin's not that way.".
+
+Bathroom is a room. "The room for baths. It's got everything a typical bathroom has.[line break]The bedroom is to the east."
+	A sink is a not portable thing in the bathroom.
+		Instead of using sink:
+			say "Holding water with both hands cupped, you splash your face. The freezing water makes your temples start pounding. Pain radiates like a cobweb through your head.";
+			try examining BathroomMirror.
+	A BathroomMirror is a not portable thing in the bathroom. A BathroomMirror has the printed name "mirror". Understand "mirror" as BathroomMirror. The description of the BathroomMirror is "Your reflection looks dispirited and glazed; even more macilent than last month. The incubus that haunts you appears nearly every night and it has become more and more apparent. You have no idea what's happening to you.".
+	A cabinet is an openable not portable closed container in the bathroom. The description of the cabinet is "Bathroom stuff if inside." Asprin is in the cabinet. The description of the asprin is "I should use this to make my head stop hurting.". Understand "pills" as Asprin.
+		Every turn when AsprinTaken is 0:
+			say "You feel the throbbing pain in your head.".
+		Instead of using asprin:
+			now AsprinTaken is 1;
+			now Asprin is nowhere;
+			say "You pop a pill in your mouth. Hopefully this will ease the pain.".
+		Instead of eating asprin:
+			try using asprin.
+
+Living Room is a room. "The wooden floor squeaks as you walk across it having bore many years of burdened and stress. The room is dimly lit and dusky. The wall in front of you is the fireplace. Next to it sits a broken European-style clock that's gathering dust. A painted portrait of your grandfather is hung up on the wall above the fireplace. A telephone that was installed just last week sits on a table and next to it a mirror with a brass foundation leans against the wall.[line break]The bedroom is to the west."
+	A clock is scenery in the Living Room. The description of a clock is "It's a European-style clock that's gathering dust. The spring stopped working forty years ago.".
+	A fireplace is scenery in the Living Room. The description of a fireplace is "Only ashes remain in the fireplace. It's been unused for so many years.".
+	A portrait is scenery in the Living Room. Understand "picture" as portrait. The description of a portrait is "It's a painted portrait of your grandfather.".
+	A brass mirror is scenery in the Living Room. "A normal brass dressing mirror with a surface as smooth as water. Even though everything in the house has gathered dust, this mirror managed to stay spotless.".
+		Instead of examining brass mirror when MirrorAttract is happening:
+			say "You walk up to the mirror, touching the mirror surface with your fingers as fear trickles into your emotions. Not knowing how much the time went by, you finally make your fingers leave the mirror. The fear disappears just as quickly as it came. The room is even more silent now.";
+			now MirrorTouched is 1.
+		Instead of examining brass mirror when MirrorAttract2 is happening:
+			say "A strong urge drives you to walk towards the mirror with your arms stretched out. As you approach the mirror, you touch the freezing mirror surface with your fingers again. A familiar feeling of fear haunts you just like the incubus. You feel your fingers are melt into the mirror, until they become invisible. You close your eyes as the darkness embraces you.[line break][line break]When you open your eyes, you are in an unfamiliar world. In front of you is an exceptionally strange room. The walls are crystaline white and seem to be moving fluidly. Fear has left you. You don't know why, but a strong feeling of nostalgia occupies your emotions. As you walk forward, a bright light surrounds you.";
+			now player is in Lobby;
+			now toy is nowhere.
+	A telephone is portable scenery in the Living Room. Understand "phone" as telephone. The description of a telephone is "This seems to be the only modern piece of technology in the house.".
+		Instead of taking telephone:
+			try using telephone.
+		Instead of using telephone when PhoneAnswered is 0:
+			now PhoneAnswered is 1;
+			say "You answer the phone. 'Hello?' The only thing you hear is the dial tone. Did the phone actually ring?".
+		Instead of using telephone when PhoneAnswered is 1:
+			say "You don't need to make a call right now.".
+	The Front Door is a door. The Front door is north of the living room.
+	Instead of opening front door when Knocking is happening:
+		say "You hesitate to open the front door. You bite your lip as you turn the handle.";
+		continue the action.
+	Instead of opening front door when Knocking is not happening:
+		say "You don't need to go anywhere right now.".
+	A couch is an enterable not portable container in the living room. The description of the couch is "An old dirty couch.".
+	Instead of entering couch:
+		say "You sweep away some dirt on the couch. You sit down, rubbing your temples. A pool of silence envelopes you, all sound seems to be swallowed up by this old house. This house has always felt claustraphobic. Are the frequent nightmares because of this?";
+		continue the action.
+
+Lobby is a room. "Welcome to CoreTech, where innovation happens to change the future. Congratulations, you are the first of many to be qualified as a human test subject for the newly invented Time Machine. Please follow the escort to the briefing room." A man called escort is in the Lobby. The description of the escort is "He's here to take you places.".
+	Instead of following escort:
+		say "'Right this way,' says the escort. You follow him to the briefing room.";
+		now player is in Briefing Room;
+		try examining scientist.
+	Instead of talking escort:
+		say "'Please follow me to the briefing room,' says the escort.".
+
+Briefing Room is a room . "The room for briefing." A woman called scientist is in the Briefing Room. The description of the scientist is "She must be one of the people working on the Time Machine."
+	Instead of following scientist when ScientistTalked is 1:
+		say "You follow her to the testing room. 'You'll be conducting the test here,' she says before leaving the room.";
+		now player is in PresentTestingRoom.
+	Instead of talking scientist when ScientistTalked is 0:
+		say "'Oh good he's here,' says the scientist, 'Okay, here's the deal. In the testing room is the Time Machine and a clock on the wall. It's a small circular device with a large button on it. It's set to travel 24 hours into the future. If the button is red you're in the present. If it's green, you're in the future. Your job is simple. Go into the testing room, take the Time Machine and press the button. Check the clock, make sure it's tomorrow, check off with us, and then press the button again. Got it? Cool. Please follow me to the testing room.'";
+		now ScientistTalked is 1.
+	Instead of talking scientist when ScientistTalked is 1:
+		say "'Please follow me to the testing room,' says the scientist.".
+
+PresentTestingRoom is a room with the printed name "Testing Room". "A large cube vault with metal walls. Clearly if something were to go wrong here, it would be contained. The clock on the wall says it's Tuesday afternoon." 
+	Time Machine is in the PresentTestingRoom. 
+	A PresentClock is scenery in the PresentTestingRoom. PresentClock has the printed name "clock".
+		The description of a PresentClock is "It says it's Tuesday afternoon.".
+		Understand "clock" as a PresentClock.
+	The PresentVaultDoor is a locked door with the printed name "Vault Door".
+		Understand "door" and "vault door" as the PresentVaultDoor.
+		The PresentVaultDoor is north of the PresentObservationRoom and south of the PresentTestingRoom.
+FutureTestingRoom is a room with the printed name "Testing Room". "A large, dimly-lit cube vault with rusty metal walls. Doesn't look like this place has been used in years. The clock on the wall says it's Wednesday morning, but it's not moving forward."
+	A FutureClock is scenery in the FutureTestingRoom with the printed name "clock".
+		The description of a FutureClock is "It says it's Wednesday morning.".
+		Understand "clock" as a FutureClock.
+	The FutureVaultDoor is an door with the printed name "Vault Door".
+		Understand "door" and "vault door" as the FutureVaultDoor.
+		The FutureVaultDoor is north of the FutureObservationRoom and south of the FutureTestingRoom.
+		After opening FutureVaultDoor:
+			now FutureVaultDoor is unopenable;
+			say "You reach over to open the vault door when it suddenly falls loose from its hinges and crashes to the ground. At least it's open now.".
+
+PresentObservationRoom is a room with the printed name "Observation Room". "The room observing the testing room. Monitors and control panels cover every inch of the walls. The scientist's lab coat is drapped over a chair. It look like she left in a hurry."
+	Lab Coat is scenery in the PresentObservationRoom.
+	The PresentYellowDoor is a locked door with the printed name "Yellow Door".
+		Understand "door" and "yellow door" as the PresentYellowDoor.
+		The PresentYellowDoor is west of the PresentObservationRoom and east of the PresentGeneratorRoom.
+	The PresentGreenDoor is a door with the printed name "Green Door".
+		Understand "door" and "green door" as the PresentGreenDoor.
+		The PresentGreenDoor is east of the PresentObservationRoom and west of the PresentHallway.
+		Instead of entering PresentGreenDoor:
+			now player is in PresentHallway;
+			say "'You! Freeze!' Suddenly you're pinned down by someone really heavy. 'This is security,' says the big man into his radio, 'I've apprehended the suspect.'[line break]Suspect? You don't think you've done anything wrong. But out of instinct you use the Time Machine.";
+			try using Time Machine.
+FutureObservationRoom is a room with the printed name "Observation Room". "The room observing the testing room. Most of the machinery isn't functioning anymore.".
+	The FutureYellowDoor is a door with the printed name "Yellow Door".
+		Understand "door" and "yellow door" as the FutureYellowDoor.
+		The FutureYellowDoor is west of the FutureObservationRoom and east of the FutureGeneratorRoom.
+	The FutureGreenDoor is a door with the printed name "Green Door".
+		Understand "door" and "green door" as the FutureGreenDoor.
+		The FutureGreenDoor is east of the FutureObservationRoom and west of the FutureHallway.
+		Instead of opening FutureGreenDoor: say "It's stuck shut.".
+
+PresentHallway is a room with the printed name "Testing Lab Hallway". "Just a hallway. A long room with doors.".
+FutureHallway is a room with the printed name "Testing Lab Hallway". "Even the boring hallways look like a mess with the peeling wallpaper and dust in the air.".
+	Instead of using Time Machine when player is in FutureHallway:
+		say "You just got away from that security guard, so you're not too eager to go back.".
+
+PresentGeneratorRoom is a room with the printed name "Generator Room". "The room that manages the energy in the building.".
+FutureGeneratorRoom is a room with the printed name "Generator Room". "The room that manages the energy in the building. Some of the machinery is surprisingly still functional.".
+	Charger is in FutureGeneratorRoom. The Charger is fixed in place. The description of the charger is "A stray plug wire running from the power generators. It looks like it can plug into the Time Machine.".
+	Instead of using Charger when Powered is 0:
+		say "You plug in the Time Machine and after a few moments the button flares green.";
+		now Powered is 1.
+	Instead of using Charger when Powered is 1:
+		say "You've already charged the Time Machine.".
+
+PresentHallway2 is a room with the printed name "Storage Room Hallway". "Just a hallway. A long room with doors.[line break]To the north is an Equipment Room and to the south is a Chemical Room. The doors are to the east and west.".
+	The PresentRedDoor is a locked door with the printed name "Red Door".
+		Understand "door" and "red door" as the PresentRedDoor.
+		The PresentRedDoor is east of the PresentHallway and west of the PresentHallway2. PresentRedDoor is locked.
+FutureHallway2 is a room with the printed name "Storage Room Hallway". "Even the boring hallways look like a mess with the peeling wallpaper and dust in the air.[line break]To the north is an Equipment Room and to the south is a Chemical Room. The doors are to the east and west.".
+	The FutureRedDoor is a door with the printed name "Red Door".
+		Understand "door" and "red door" as the FutureRedDoor.
+		The FutureRedDoor is east of the FutureHallway and west of the FutureHallway2.
+		Instead of opening FutureRedDoor when FutureRedDoor is unopenable:
+			say "It's caved in.".
+		Instead of opening FutureRedDoor when FutureRedDoor is openable:
+			now FutureRedDoor is unopenable;
+			now player is in FutureHallway2.
+
+PresentEquipmentRoom is a room with the printed name "Equipment Room". "Lots of science equipment occupies the shelves. Most are bizarre devices that you've never seen, but there are a few simpler contraptions.".
+FutureEquipmentRoom is a room with the printed name "Equipment Room". "Mostly destroyed equipment occupy the shelves. Doesn't look like there's anything useful left.".
+PresentChemicalRoom is a room with the printed name "Chemical Room". "Lots of bottles and beakers lines the shelves. For once, you wish you paid attention in chemistry class.".
+FutureChemicalRoom is a room with the printed name "Chemical Room". "Broken glass everywhere. The only liquid left is in a large barrel.".
+PresentEquipmentRoom is north of PresentHallway2. FutureEquipmentRoom is north of FutureHallway2.
+PresentChemicalRoom is south of PresentHallway2. FutureChemicalRoom is south of FutureHallway2.
+The bucket is in the PresentEquipmentRoom. The barrel of acid is in the FutureChemicalRoom.
+The poison ivy plant is in the PresentEquipmentRoom. The poison ivy vines are in the FutureEquipmentRoom.
+	The description of the poison ivy plant is "A potted poison ivy plant. Why would someone use poison ivy as a potted plant?".
+	The description of the poison ivy vines is "The vines almost completely cover the door. Looks like you won't be going through that door any time soon.".
+	The poison ivy plant and the poison ivy vines are fixed in place.
+The PresentBlueDoor is a locked door with the printed name "Blue Door".
+	Understand "door" and "blue door" as the PresentBlueDoor.
+	The PresentBlueDoor is north of the PresentEquipmentRoom and south of the PresentCameraRoom.
+The FutureBlueDoor is a door with the printed name "Blue Door".
+	Understand "door" and "blue door" as the FutureBlueDoor.
+	The FutureBlueDoor is north of the FutureEquipmentRoom and south of the FutureCameraRoom.
+	A pot is nowhere. The description of the pot is "The remains of the poison ivy rest in the pot.". The pot is fixed in place.
+	Instead of opening FutureBlueDoor when poison ivy vines are in FutureEquipmentRoom:
+		say "There are vines in the way.".
+
+PresentCameraRoom is a room with the printed name "Surveillance Room". "Computers screens everywhere showing the ins and outs of the building. Looks like whoever was stationed here is on a break."
+	A PresentSkylight and an access card are nowhere.
+	A PresentComputer and a PresentSkylightSwitch are in the PresentCameraRoom.
+FutureCameraRoom is a dark room with the printed name "Surveillance Room". "Broken machinery lines the walls. Light pours into the room through a skylight in the ceiling. Through it, you see a gloomy cloudy sky.".
+	A surveillance videochip, a FutureComputer, and a FutureSkylightSwitch is in the FutureCameraRoom.
+	A FutureSkylight is nowhere.
+
+PresentMeetingRoom is a room with the printed name "Meeting Room". "Looks like this is where the meetings are held.".
+	PresentPurpleDoor is a locked door with the printed name "Purple Door". Understand "purple door" and "door" as PresentPurpleDoor.
+	PresentPurpleDoor is east of the PresentHallway2 and west of the PresentMeetingRoom.
+	SecondScientist is a woman in the PresentMeetingRoom.
+		SecondScientist has the printed name "scientist".
+		Understand "scientist" as SecondScientist.
+		Instead of talking SecondScientist:
+			say "'Oh! You gave me a scare,' says the scientist. 'I thought we scared you off with security handling you so roughly. So how was the future?' You remember what you saw on the computer. 'The world is going to end!' you blurt out. The scientist looks at you like you're crazy, 'Sure it is, pal.' 'No! The Time Machine's going to explode or something. The end of the world is caused by the Time Machine! You guys need to stop making the Time Machine!'[line break][line break]This is when the scientist turns completely dark. 'Ok listen here, pal. Hundreds of millions of dollars was put into this project and we are predicting that money to come back to us increased by a hundred fold. Stopping it just because a human test subject was a little delusional would be sheer madness wouldn't it? And also, you signed a non-disclosure agreement meaning if you tell anyone about what happened in this test, bad things are going to happen. Are we on the same page?' You nod. 'I'm glad that we have an understanding,' she continues, 'And besides, no one's going to believe that the apocalypse is soon when it's coming from someone like you.'[line break][line break]The scientist's voice echos as darkness closes in. Fear inches into your emotions, trapping your whole body. You can’t move. You can’t think. You can’t breathe. You squeeze your eyes shut.";
+			end the story saying "You open your eyes. You’re standing in front of the brass mirror, smooth as water. The headache starts again. You walk to the couch, sitting down, holding your head with both hands, wearied and tired. Was that real? Or was that just a dream?[line break][line break]The phone is ringing.".
+FutureMeetingRoom is a room with the printed name "Meeting Room". "Looks like this is where the meetings used to be held.".
+	FuturePurpleDoor is a locked door with the printed name "Purple Door". Understand "purple door" and "door" as FuturePurpleDoor.
+	FuturePurpleDoor is east of the FutureHallway2 and west of the FutureMeetingRoom.
+
+Table of Parallel Rooms
+Present room	Future room
+PresentTestingRoom	FutureTestingRoom
+PresentObservationRoom	FutureObservationRoom
+PresentGeneratorRoom	FutureGeneratorRoom
+PresentHallway	FutureHallway
+PresentHallway2	FutureHallway2
+PresentMeetingRoom	FutureMeetingRoom
+PresentEquipmentRoom	FutureEquipmentRoom
+PresentChemicalRoom	FutureChemicalRoom
+PresentCameraRoom	FutureCameraRoom
+
+Chapter 3 - Items
+
+Understand "tm" as Time Machine.
+	The description of the Time Machine is "It's a small circular device with a large button on it. It lets me travel through time. The button is [if Powered is 0]black[otherwise if TimeZone is 0]red[otherwise]green[end if].".
+	After taking Time Machine:
+		say "You pick up the small handheld circular device with a button in the middle that is glowing red.[line break]You realize that you can use 'tm' to refer to the Time Machine.[line break]The color of the Time Machine's button also appears on your status bar.[line break]You hear the scientist through the overhead speaker, 'Whenever you're ready.'";
+		now the right hand status line is "TM Light: [if Powered is 0]Black[otherwise if TimeZone is 0]Red[otherwise if TimeZone is 1]Green[end if]".
+	Instead of dropping Time Machine, say "It's probably a good idea to hang onto that.".
+
+Understand "coat" as Lab Coat.
+	Lab Coat is scenery.
+	The description of the Lab Coat is "The scientist's lab coat. It looks like she left in a hurry.".
+	Instead of taking Lab Coat: say "You decide it would be better to not touch that.".
+
+The bucket of acid is nowhere.
+	The description of the bucket is "A container to hold stuff. It seems to be made of very resilient materal.".
+	The description of the barrel of acid is "It seems to have several random chemicals poured it. Perhaps it was used as the waste.".
+	The description of the bucket of acid is "Careful not to spill.".
+	Instead of taking barrel of acid: say "The barrel is pretty heavy and you don't want to burn your hands by taking the acid directly. You need a container of some sort.".
+	Instead of using bucket in FutureChemicalRoom:
+		say "You fill the bucket with some acid.";
+		now bucket is nowhere;
+		now player has bucket of acid.
+	Instead of using bucket of acid in FutureEquipmentRoom:
+		say "There's too many vines and not enough acid. There must be a better way to do this.".
+	Instead of using bucket of acid in PresentEquipmentRoom:
+		say "You pour the bucket of acid onto the poison ivy plant, effectively killing it.";
+		now pot is in PresentEquipmentRoom;
+		now bucket of acid is nowhere;
+		now poison ivy vines are nowhere;
+		now poison ivy plant is nowhere.
+
+Understand "computer" as PresentComputer. PresentComputer has the printed name "computer".
+	PresentComputer is fixed in place.
+	Instead of using PresentComputer when surveillance videochip is not carried:
+		say "I don't think now is the time to be searching the web.".
+	Instead of using PresentComputer when surveillance videochip is carried:
+		now VideoWatched is 1.
+Understand "computer" as FutureComputer. FutureComputer has the printed name "computer".
+	FutureComputer is fixed in place.
+	Instead of using FutureComputer:
+		say "You're no computer engineer, but you'd say this piece of machinery is beyond repair.".
+
+Understand "skylight" as PresentSkylight. A PresentSkylight has the printed name "skylight". PresentSkylight is scenery.
+	A PresentSkylight is fixed in place. A PresentSkylight is lit.
+	The description of the PresentSkylight is "You can see the sky through the skylight. It's a very nice sunny day today.".
+Understand "skylight" as FutureSkylight. FutureSkylight has the printed name "skylight". FutureSkylight is scenery.
+	FutureSkylight is fixed in place. A FutureSkylight is lit.
+	The description of the FutureSkylight is "Light pours through the skylight. Through it, you see a gloomy cloudy sky.".
+
+Understand "switch" as PresentSkylightSwitch. PresentSkylightSwitch has the printed name "switch".
+	PresentSkylightSwitch is fixed in place.
+	Instead of using PresentSkylightSwitch when PresentSkylight is not in PresentCameraRoom:
+		say "You flick the switch and a skylight is revealed on the ceiling.";
+		now PresentSkylight is in PresentCameraRoom;
+		now FutureSkylight is in FutureCameraRoom.
+	Instead of using PresentSkylightSwitch when PresentSkylight is in PresentCameraRoom:
+		say "You flick the switch and the skylight is once against concealed.";
+		now PresentSkylight is nowhere;
+		now FutureSkylight is nowhere.
+
+Understand "switch" as FutureSkylightSwitch. FutureSkylightSwitch has the printed name "switch".
+	FutureSkylightSwitch is fixed in place.
+	Instead of using FutureSkylightSwitch:
+		say "You flick the switch up and down, but it doesn't seem to do anything. That's when you realize that nothing else in the room works, so it's not very unusual.".
+
+Understand "video" and "chip" as surveillance videochip. 
+Instead of using surveillance videochip when player is not in PresentCameraRoom:
+	say "You need something to play this with.".
+Instead of using surveillance videochip when player is in PresentCameraRoom:
+	now VideoWatched is 1.
+
+Understand "card" as access card.
+	The description of an access card is "Looks like a temporary visitor's card. It probably doesn't unlock as many doors as you'd like.".
+	Instead of using an access card when player is in PresentHallway2:
+		say "You slide the access card on the purple door's card reader and it flashes green. The purple door is now unlocked.";
+		now access card is nowhere;
+		now PresentPurpleDoor is unlocked;
+		now FuturePurpleDoor is unlocked.
+	Instead of using an access card when player is in FutureHallway2:
+		say "You slide the access card on the purple door's card reader, but nothing happens. Maybe it's not working.".
+
+A package is a closed openable container that is nowhere. Understand "box" as package. The description of a package is "The small box has a card that says, 'Happy housewarming!' from your coworker. You shake the box, but you still have no clue what's inside.".
+	A toy is nowhere. Understand "doll" as toy. The description of toy is "It's a cute toy with a huge head. A gift from your coworker.".
+	Instead of opening a package:
+		say "You scream. A green monster with wrinkled skin, swelled eyes, and a big mouth emerges from the box![line break]You close your eyes and breathe, trying your best to keep calm.[line break][line break]When you open your eyes, you realize you've overreacted. A cute toy with a huge head sits in front of you. It is not a monster at all! Holding it with both hands, you grow worried. 'Am I crazy?' you think.[line break]Suddenly, that weird feeling comes to you again, and this time is even stronger than any times before.";
+		now package is nowhere;
+		now player has toy.
+
+Chapter 4 - Actions
+
+Followfailing is an action applying to nothing. Understand "follow" as followfailing. Carry out followfailing: say "Who do you want to follow?".
+Following is an action applying to one thing. Understand "follow [someone]" as following.
+Carry out following:
+	if following a man:
+		say "He's not going anywhere.";
+	otherwise if following a woman:
+		say "She's not going anywhere.";
+	otherwise:
+		say "It's not going anywhere.".
+
+Talkfailing is an action applying to nothing. Understand "talk" as talkfailing. Carry out talkfailing: say "Who do you want to talk to?".
+Talking is an action applying to one thing. Understand "talk to [someone]" as talking.
+Carry out talking:
+	if talking a man:
+		say "He's got nothing to say.";
+	otherwise if talking a woman:
+		say "She's got nothing to say.";
+	otherwise:
+		say "It's got nothing to say.".
+
+Usefailing is an action applying to nothing. Understand "use" as usefailing. Carry out usefailing: say "What do you want to use?"
+Using is an action applying to one thing. Understand "use [something]" as using.
+Carry out using:
+	if using Time Machine:
+		if Time Machine is not carried:
+			say "You've got to pick it up first.";
+		otherwise if Powered is 0:
+			say "You press the button, but nothing happens. You notice that the button is strangely black.";
+		otherwise:
+			if TimeZone is 1:
+				now TimeZone is 0;
+				now player is in the present room corresponding to the future room of location in the Table of Parallel Rooms;
+			otherwise if TimeZone is 0:
+				now TimeZone is 1;
+				now player is in the future room corresponding to the present room of location in the Table of Parallel Rooms;
+			say "You press the button. The world spins around you before coming to a stop.[line break]The button now [if Powered is 0]is pitch black[otherwise if TimeZone is 0]glows red[otherwise if TimeZone is 1]glows green[end if].";
+	otherwise:
+		say "You can't use that right now.".
+
+Asking for help is an action out of world.
+Understand "help" or "hint" or "info" or "tips" as asking for help.
+Carry out asking for help:
+	say "Here are some tips:[line break]
+	-You can use commands such as FOLLOW (someone), TALK TO (someone), TAKE (something), EXAMINE (something) (or x (something) works too), USE (something), OPEN (something), and LOOK.[line break]-If you get stuck try looking around or examining objects to get some clues.";
+	if player has Time Machine:
+		say "-Remember that you can refer to the Time Machine as 'tm'.[line break]-If something doesn't work in one time zone, try time traveling and doing it again in the other time zone.[line break]-The color of the Time Machine button (and thus the time zone) is displayed on the status bar.";
+
+Chapter 5 - Scenes
+
+MirrorAttract is a scene. MirrorAttract begins when player is in Living Room.
+	Every turn during MirrorAttract:
+		say "You have the sudden urge to glance at the brass mirror. You try your best not to look at it, but it still attracts your attention, like it's giving off a magical aura.".
+	MirrorAttract ends when MirrorTouched is 1.
+
+Ringing is a scene. Ringing begins when MirrorAttract ends.
+	Every turn during Ringing:
+		say "The phone is ringing.".
+	Ringing ends when PhoneAnswered is 1.
+
+Knocking is a scene. Knocking begins when Ringing ends.
+	Every turn during Knocking:
+		say "You hear a knock on the door.".
+	When knocking ends:
+		say "'Sir, here is your package.' A mailman stands outside in front of you. Taking the package, you sign the sheet and close the door.";
+		now Front is closed;
+		now player has a package;
+		try examining package.
+	Knocking ends when Front Door is open.
+
+MirrorAttract2 is a scene. MirrorAttract2 begins when player has toy.
+	Every turn during MirrorAttract2:
+		say "You have the sudden urge to glance at the brass mirror. You try your best not to look at it, but it still attracts your attention, like it's giving off a magical aura.".
+	MirrorAttract2 ends when player is in lobby.
+
+First is a scene. First begins when the player is in the FutureTestingRoom.
+	FirstCounter is a number that varies.
+	When First begins:
+		now Powered is 0;
+		now FirstCounter is 0.
+	Every turn during First:
+		say the observation corresponding to the obNum of FirstCounter in the Table of First Observations;
+		increase FirstCounter by 1.
+	First ends when FirstCounter is 5 or Powered is 1.
+
+Table of First Observations
+obNum	observation
+0	"You feel queasy and light-headed. You've made it through the time portal."
+1	"Something's off. The lab seems deserted, the clock reads less than 24 hours from when you started, and the place seems to have aged years."
+2	"'Hello?' you call out. No Answer."
+3	"The button on the time machine is black. The scientist never mentioned anything about the button being this color."
+4	"Maybe the Time Machine is out of power. Try finding something to charge it with."
+
+Second is a scene. Second begins when the player is in FutureHallway2.
+	SecondCounter is a number that varies.
+	When Second begins:
+		now SecondCounter is 0.
+	Every turn during Second:
+		say the observation corresponding to the obNum of SecondCounter in the Table of Second Observations;
+		increase SecondCounter by 1.
+	Second ends when SecondCounter is 4.
+
+Table of Second Observations
+obNum	observation
+0	"You walk through the door just as the doorframe give away and caves into the doorway. Looks like there's no going back."
+1	"Looks like talking to anyone about the end of the world is out of the question. They've already got security looking all over for you back in the present."
+2	"Maybe you can take matters into your own hand, you think. But first you have to find out how this place got to be like this."
+3	"Maybe the building has some kind of surveillance system that you can check."
+
+Third is a scene. Third begins when VideoWatched is 1.
+	When Third begins:
+		now surveillance videochip is nowhere;
+		now access card is in PresentCameraRoom;
+		say "You insert the videochip into the computer. The screen lights up and plays the video automatically. At first it doesn't seem like anything is happening, but then there's a huge green wave that ripples across all camera views. Shocked, you rewind the video and try to find the origin of the shockwave, It looks like it's coming from a particular room. [line break][line break]It reads 'Time Machine Testing Lab'. The end of the world was caused by the Time Machine! You need to do something about this.[line break][line break]You then also notice an access card on the table that you overlooked earlier.".

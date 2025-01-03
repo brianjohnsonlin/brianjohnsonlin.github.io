@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Eggy Interactive - Time — 5 of 5</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="author" content="Eggy Interactive" />
+  <meta name="description" content="A page for the game Time by Eggy Interactive." />
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+ </head>
+
+<body>
+
+<div class = "container">
+
+<div class ="sourcecoverimage">
+	<span><a href="Cover.jpg"><img src="Small Cover.jpg" border="1"></a></span>
+</div>
+
+<div class ="sourceintroduction">
+	<h1>
+		<span>Time</span> <span class="pagination">— 5 of 5</span>
+	</h1>
+	<h2>
+		<span>Eggy Interactive</span>
+	</h2>
+	<div class ="sourcebibliography">
+		<span>Release 1</span>
+	</div>
+</div>
+
+<div class = "links">
+<ul>
+<li><a href="index.html">Home page</a></li><li><a href="source.html">Beginning</a></li><li><a href="source_2.html">Previous</a></li>
+</ul>
+</div>
+
+<div class = "source">
+<p class="indent0"><span class="heading">Section 0.4 - Actions</span></p><p class="indent0">Followfailing is an action applying to nothing. Understand &quot;<span class="quote">follow</span>&quot; as followfailing. Carry out followfailing: say &quot;<span class="quote">Who do you want to follow?</span>&quot;.</p><p class="indent0">Following is an action applying to one thing. Understand &quot;<span class="quote">follow [</span><span class="substitution">someone</span><span class="quote">]</span>&quot; as following.</p><p class="indent0">Carry out following:</p><p class="indent1">if following escort:</p><p class="indent2">say &quot;<span class="quote">'Right this way,' says the escort. You follow him to the briefing room.</span>&quot;;</p><p class="indent2">now player is in Briefing Room;</p><p class="indent2">try examining scientist;</p><p class="indent1">otherwise if following scientist and ScientistTalked is 1:</p><p class="indent2">say &quot;<span class="quote">You follow her to the testing room. 'You'll be conducting the test here,' she says before leaving the room.</span>&quot;;</p><p class="indent2">now player is in PresentTestingRoom;</p><p class="indent1">otherwise if following a man:</p><p class="indent2">say &quot;<span class="quote">He's not going anywhere.</span>&quot;;</p><p class="indent1">otherwise if following a woman:</p><p class="indent2">say &quot;<span class="quote">She's not going anywhere.</span>&quot;;</p><p class="indent1">otherwise:</p><p class="indent2">say &quot;<span class="quote">It's not going anywhere.</span>&quot;.</p><p class="indent0">Talkfailing is an action applying to nothing. Understand &quot;<span class="quote">talk</span>&quot; as talkfailing. Carry out talkfailing: say &quot;<span class="quote">Who do you want to talk to?</span>&quot;.</p><p class="indent0">Talking is an action applying to one thing. Understand &quot;<span class="quote">talk to [</span><span class="substitution">someone</span><span class="quote">]</span>&quot; as talking.</p><p class="indent0">Carry out talking:</p><p class="indent1">if talking escort:</p><p class="indent2">say &quot;<span class="quote">'Please follow me to the briefing room,' says the escort.</span>&quot;;</p><p class="indent1">otherwise if talking scientist:</p><p class="indent2">if ScientistTalked is 0:</p><p class="indent3">say &quot;<span class="quote">'Oh good he's here,' says the scientist, 'Okay, here's the deal. In the testing room is the Time Machine and a clock on the wall. It's a small circular device with a large button on it. It's set to travel 24 hours into the future. If the button is red you're in the present. If it's green, you're in the future. Your job is simple. Go into the testing room, take the Time Machine and press the button. Check the clock, make sure it's tomorrow, check off with us, and then press the button again. Got it? Cool. Please follow me to the testing room.'</span>&quot;;</p><p class="indent3">now ScientistTalked is 1;</p><p class="indent2">otherwise:</p><p class="indent3">say &quot;<span class="quote">'Please follow me to the testing room,' says the scientist.</span>&quot;;</p><p class="indent1">otherwise if talking a man:</p><p class="indent2">say &quot;<span class="quote">He's got nothing to say.</span>&quot;;</p><p class="indent1">otherwise if talking a woman:</p><p class="indent2">say &quot;<span class="quote">She's got nothing to say.</span>&quot;;</p><p class="indent1">otherwise:</p><p class="indent2">say &quot;<span class="quote">It's got nothing to say.</span>&quot;.</p><p class="indent0">Usefailing is an action applying to nothing. Understand &quot;<span class="quote">use</span>&quot; as usefailing. Carry out usefailing: say &quot;<span class="quote">What do you want to use?</span>&quot;</p><p class="indent0">Using is an action applying to one carried thing. Understand &quot;<span class="quote">use [</span><span class="substitution">something</span><span class="quote">]</span>&quot; as using.</p><p class="indent0">Carry out using:</p><p class="indent1">if using Time Machine:</p><p class="indent2">if Powered is 0:</p><p class="indent3">say &quot;<span class="quote">You press the button, but nothing happens. You notice that the button is strangely black.</span>&quot;;</p><p class="indent2">otherwise:</p><p class="indent3">say &quot;<span class="quote">You press the button. The world spins around you before coming to a stop.</span>&quot;;</p><p class="indent3">if FirstTravel is 0:</p><p class="indent4">say &quot;<span class="quote">You feel queasy and light-headed. You've made it through the time portal.</span>&quot;;</p><p class="indent4">now Powered is 0;</p><p class="indent4">now TimeZone is 1;</p><p class="indent4">now FirstTravel is 1;</p><p class="indent4">now TimeTravel is 1;</p><p class="indent4">try going down;</p><p class="indent4">now TimeTravel is 0;</p><p class="indent3">otherwise if TimeZone is 1:</p><p class="indent4">now TimeZone is 0;</p><p class="indent4">now TimeTravel is 1;</p><p class="indent4">try going up;</p><p class="indent4">now TimeTravel is 0;</p><p class="indent3">otherwise if TimeZone is 0:</p><p class="indent4">now TimeZone is 1;</p><p class="indent4">now TimeTravel is 1;</p><p class="indent4">try going down;</p><p class="indent4">now TimeTravel is 0;</p><p class="indent1">otherwise if using Charger:</p><p class="indent2">say &quot;<span class="quote">You plug in the Time Machine and after a few moments the button flares green.</span>&quot;;</p><p class="indent2">now Powered is 1;</p><p class="indent1">otherwise:</p><p class="indent2">say &quot;<span class="quote">You're confused as to how you should use it.</span>&quot;.</p><p class="indent0">Check going up:</p><p class="indent1">if TimeTravel is 1:</p><p class="indent2">continue the action;</p><p class="indent1">otherwise:</p><p class="indent2">say &quot;<span class="quote">You can't go that way.</span>&quot;;</p><p class="indent2">stop the action.</p><p class="indent0">Check going down:</p><p class="indent1">if TimeTravel is 1:</p><p class="indent2">continue the action;</p><p class="indent1">otherwise:</p><p class="indent2">say &quot;<span class="quote">You can't go that way.</span>&quot;;</p><p class="indent2">stop the action.</p><p class="indent0">Release along with <span class="comment">[cover art, ]</span>the source text, an interpreter, and a website.</p>
+</div>
+
+<div class ="notes">
+
+</div>
+
+</div>
+
+</body>
+
+</html>

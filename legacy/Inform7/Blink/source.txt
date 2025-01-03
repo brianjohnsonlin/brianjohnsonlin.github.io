@@ -1,0 +1,25 @@
+"Blink" by Brian Lin
+
+Bedroom is a room. "It's morning. Sunlight poors into the room through partially closed blindes.". A bed is an enterable not portable container in the bedroom. The player is in the bed. The description of the bed is "That's where I sleep".
+
+The doorway is an open door in Bedroom. The doorway is west of the the Bedroom and east of the Bathroom. The description of the doorway is "That's what seperates my bedroom from my bathroom.".
+Instead of entering doorway:
+	if player is in bed:
+		say "I can't do anything while I'm lying in bed.";
+	otherwise:
+		now player is in Bathroom
+
+Bathroom is a room. "The room for baths. It's got everything a typical bathroom has. You notice something about your reflection in the mirror." A mirror is a not portable scenery in the bathroom. A cabinet is an openable not portable closed container in the bathroom. The description of the cabinet is "Has my toiletries inside." A toothbrush is in the cabinet. The description of the toothbrush is "I brush my teeth with this.".
+
+Instead of taking bed, say "I think I like that where it is."
+Instead of taking doorway, say "I think I like that where it is."
+Instead of taking cabinet, say "I think I like that where it is."
+Instead of taking mirror, say "I think I like that where it is."
+Instead of taking toothbrush, say "I brushed my teeth earlier, I don't think I need to do it again."
+
+Understand "reflection" as the mirror.
+Instead of examining mirror:
+	say "My reflection looks fine actually. Nothing out of the ordinary. Maybe I was just imagin-[line break]Wait. Did I just watch myself blink?";
+	end the story saying "Things are not always what they seem. Next thing you know, you'll hear a knocking on glass, but it's not from the window.".
+
+Release along with cover art, the source text, an interpreter, and a website.

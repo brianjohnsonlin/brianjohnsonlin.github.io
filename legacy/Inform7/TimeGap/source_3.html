@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Eggy Interactive - TimeGap In The Mirror — 5 of 6</title>
+  <link href="Small Cover.jpg" rel="shortcut icon" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="author" content="Eggy Interactive" />
+  <meta name="description" content="A page for the game TimeGap In The Mirror by Eggy Interactive." />
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+ </head>
+
+<body>
+
+<div class = "container">
+
+<div class ="sourcecoverimage">
+	<span><a href="Cover.jpg"><img src="Small Cover.jpg" border="1"></a></span>
+</div>
+
+<div class ="sourceintroduction">
+	<h1>
+		<span>TimeGap In The Mirror</span> <span class="pagination">— 5 of 6</span>
+	</h1>
+	<h2>
+		<span>Eggy Interactive</span>
+	</h2>
+	<div class ="sourcebibliography">
+		<span>Release 1</span>
+	</div>
+</div>
+
+<div class = "links">
+<ul>
+<li><a href="index.html">Home page</a></li><li><a href="source.html">Beginning</a></li><li><a href="source_2.html">Previous</a></li><li><a href="source_4.html">Next</a></li>
+</ul>
+</div>
+
+<div class = "source">
+<p class="indent0"><span class="heading">Chapter 4 - Actions</span></p><p class="indent0">Followfailing is an action applying to nothing. Understand &quot;<span class="quote">follow</span>&quot; as followfailing. Carry out followfailing: say &quot;<span class="quote">Who do you want to follow?</span>&quot;.</p><p class="indent0">Following is an action applying to one thing. Understand &quot;<span class="quote">follow [</span><span class="substitution">someone</span><span class="quote">]</span>&quot; as following.</p><p class="indent0">Carry out following:</p><p class="indent1">if following a man:</p><p class="indent2">say &quot;<span class="quote">He's not going anywhere.</span>&quot;;</p><p class="indent1">otherwise if following a woman:</p><p class="indent2">say &quot;<span class="quote">She's not going anywhere.</span>&quot;;</p><p class="indent1">otherwise:</p><p class="indent2">say &quot;<span class="quote">It's not going anywhere.</span>&quot;.</p><p class="indent0">Talkfailing is an action applying to nothing. Understand &quot;<span class="quote">talk</span>&quot; as talkfailing. Carry out talkfailing: say &quot;<span class="quote">Who do you want to talk to?</span>&quot;.</p><p class="indent0">Talking is an action applying to one thing. Understand &quot;<span class="quote">talk to [</span><span class="substitution">someone</span><span class="quote">]</span>&quot; as talking.</p><p class="indent0">Carry out talking:</p><p class="indent1">if talking a man:</p><p class="indent2">say &quot;<span class="quote">He's got nothing to say.</span>&quot;;</p><p class="indent1">otherwise if talking a woman:</p><p class="indent2">say &quot;<span class="quote">She's got nothing to say.</span>&quot;;</p><p class="indent1">otherwise:</p><p class="indent2">say &quot;<span class="quote">It's got nothing to say.</span>&quot;.</p><p class="indent0">Usefailing is an action applying to nothing. Understand &quot;<span class="quote">use</span>&quot; as usefailing. Carry out usefailing: say &quot;<span class="quote">What do you want to use?</span>&quot;</p><p class="indent0">Using is an action applying to one thing. Understand &quot;<span class="quote">use [</span><span class="substitution">something</span><span class="quote">]</span>&quot; as using.</p><p class="indent0">Carry out using:</p><p class="indent1">if using Time Machine:</p><p class="indent2">if Time Machine is not carried:</p><p class="indent3">say &quot;<span class="quote">You've got to pick it up first.</span>&quot;;</p><p class="indent2">otherwise if Powered is 0:</p><p class="indent3">say &quot;<span class="quote">You press the button, but nothing happens. You notice that the button is strangely black.</span>&quot;;</p><p class="indent2">otherwise:</p><p class="indent3">if TimeZone is 1:</p><p class="indent4">now TimeZone is 0;</p><p class="indent4">now player is in the present room corresponding to the future room of location in the Table of Parallel Rooms;</p><p class="indent3">otherwise if TimeZone is 0:</p><p class="indent4">now TimeZone is 1;</p><p class="indent4">now player is in the future room corresponding to the present room of location in the Table of Parallel Rooms;</p><p class="indent3">say &quot;<span class="quote">You press the button. The world spins around you before coming to a stop.[</span><span class="substitution">line break</span><span class="quote">]The button now [</span><span class="substitution">if Powered is 0</span><span class="quote">]is pitch black[</span><span class="substitution">otherwise if TimeZone is 0</span><span class="quote">]glows red[</span><span class="substitution">otherwise if TimeZone is 1</span><span class="quote">]glows green[</span><span class="substitution">end if</span><span class="quote">].</span>&quot;;</p><p class="indent1">otherwise:</p><p class="indent2">say &quot;<span class="quote">You can't use that right now.</span>&quot;.</p><p class="indent0">Asking for help is an action out of world.</p><p class="indent0">Understand &quot;<span class="quote">help</span>&quot; or &quot;<span class="quote">hint</span>&quot; or &quot;<span class="quote">info</span>&quot; or &quot;<span class="quote">tips</span>&quot; as asking for help.</p><p class="indent0">Carry out asking for help:</p><p class="indent1">say &quot;<span class="quote">Here are some tips:[</span><span class="substitution">line break</span><span class="quote">]</span></p><p class="indent1"><span class="quote">-You can use commands such as FOLLOW (someone), TALK TO (someone), TAKE (something), EXAMINE (something) (or x (something) works too), USE (something), OPEN (something), and LOOK.[</span><span class="substitution">line break</span><span class="quote">]-If you get stuck try looking around or examining objects to get some clues.</span>&quot;;</p><p class="indent1">if player has Time Machine:</p><p class="indent2">say &quot;<span class="quote">-Remember that you can refer to the Time Machine as 'tm'.[</span><span class="substitution">line break</span><span class="quote">]-If something doesn't work in one time zone, try time traveling and doing it again in the other time zone.[</span><span class="substitution">line break</span><span class="quote">]-The color of the Time Machine button (and thus the time zone) is displayed on the status bar.</span>&quot;;</p>
+</div>
+
+<div class ="notes">
+
+</div>
+
+</div>
+
+</body>
+
+</html>

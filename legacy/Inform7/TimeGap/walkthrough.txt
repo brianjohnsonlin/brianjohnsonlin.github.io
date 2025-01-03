@@ -1,0 +1,57 @@
+- start -
+get up
+w
+use sink
+open cabinet
+take asprin
+use asprin
+e
+e
+sit on couch
+look at mirror
+pick up phone
+open door
+open package
+look at mirror
+follow escort
+talk to scientist
+follow scientist
+take tm
+use tm
+use tm
+open door
+go door
+go yellow door
+use charger
+go yellow door
+use tm
+go green door
+go red door
+use tm
+n
+take bucket
+s
+use tm
+s
+use bucket
+n
+use tm
+n
+use bucket
+use tm
+go door
+use tm
+use switch
+use tm
+take chip
+use tm
+use computer
+take card
+use tm
+go door
+s
+use tm
+use card
+go purple door
+talk to scientist
+- finish -
