@@ -355,7 +355,7 @@ html.dark .about .tech-category {
   width: 2px;
   background: var(--text-color);
   opacity: 25%;
-  height: 135px;
+  height: 180px;
   position: absolute;
 }
 
@@ -445,6 +445,10 @@ html.dark .about .tech-category {
 .experience .logo {
   width: 200px;
   height: fit-content;
+}
+
+html.dark .experience .logo.dark-inverted {
+  filter: invert(1);
 }
 
 .experience .with-logo {

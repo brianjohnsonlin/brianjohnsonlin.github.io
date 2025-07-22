@@ -37,16 +37,20 @@ function setExpAndProject(hash) {
       page = 'about';
       break;
     case '#experience':
-    case '#waymo':
+    case '#zoox':
       page = 'experience';
       break;
-    case '#osmo':
+    case '#waymo':
       page = 'experience';
       expIndex = 1;
       break;
-    case '#ucsc':
+    case '#osmo':
       page = 'experience';
       expIndex = 2;
+      break;
+    case '#ucsc':
+      page = 'experience';
+      expIndex = 3;
       break;
     case '#projects':
     case '#moai':
@@ -120,12 +124,15 @@ function selectExp(index, needUpdateHash = true, instant = false) {
   if (needUpdateHash) {
     switch (index) {
       case 0:
-        updateHash('waymo');
+        updateHash('zoox');
         break;
       case 1:
-        updateHash('osmo');
+        updateHash('waymo');
         break;
       case 2:
+        updateHash('osmo');
+        break;
+      case 3:
         updateHash('ucsc');
         break;
       default:
